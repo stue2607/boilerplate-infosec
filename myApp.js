@@ -1,12 +1,14 @@
 const express = require('express');
 const app = express();
+const helmet = require('helmet');  // Import helmet before using it
+// Use helmet middleware
 app.use(helmet.hidePoweredBy());
 app.disable('x-powered-by');
-const helmet = require('helmet');
 app.use(helmet());
+
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+    console.log(`Server running on port ${PORT}`);
 });
 
 
