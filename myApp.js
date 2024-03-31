@@ -6,6 +6,9 @@ app.use(helmet.hidePoweredBy());
 app.disable('x-powered-by');
 app.use(helmet());
 
+// Add the frameguard middleware with the configuration object
+app.use(helmet.frameguard({ action: 'deny' }));
+
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
