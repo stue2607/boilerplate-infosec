@@ -16,5 +16,8 @@
 		"express",
 		"freecodecamp"
 	],
-	"license": "MIT"
+	"license": "MIT",
+	"devDependencies": {
+		"@types/react-helmet": "^6.1.11"
+	}
 }
