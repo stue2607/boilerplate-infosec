@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+app.use(helmet.hidePoweredBy());
 app.disable('x-powered-by');
 const helmet = require('helmet');
 app.use(helmet());
