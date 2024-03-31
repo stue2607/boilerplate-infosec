@@ -4,7 +4,10 @@ app.use(helmet.hidePoweredBy());
 app.disable('x-powered-by');
 const helmet = require('helmet');
 app.use(helmet());
-
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
 
 
 
