@@ -4,6 +4,10 @@ const helmet = require('helmet');  // Import helmet before using it
 // Use helmet middleware
 app.use(helmet.hidePoweredBy());
 app.disable('x-powered-by');
+app.use((req, res, next) => {
+  res.set('X-Content-Type-Options', 'nosniff');
+  next();
+});
 app.use(helmet());
 
 // Add the frameguard middleware with the configuration object
@@ -16,6 +20,7 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
+
 
 
 
