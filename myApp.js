@@ -2,6 +2,16 @@ const express = require('express');
 const app = express();
 const helmet = require('helmet');  // Import helmet before using it
 // Use helmet middleware
+// Define the max age in seconds (90 days)
+const ninetyDaysInSeconds = 90 * 24 * 60 * 60;
+
+// Configure helmet.hsts() to use HTTPS for the next 90 days
+app.use(
+  helmet.hsts({
+    maxAge: ninetyDaysInSeconds,
+    force: true, // Override Gitpod's settings
+  })
+);
 app.use(helmet.hidePoweredBy());
 app.disable('x-powered-by');
 app.use((req, res, next) => {
@@ -9,6 +19,7 @@ app.use((req, res, next) => {
   next();
 });
 app.use(helmet());
+app.use(helmet.ieNoOpen())
 
 // Add the frameguard middleware with the configuration object
 app.use(helmet.frameguard({ action: 'deny' }));
